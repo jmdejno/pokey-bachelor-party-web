@@ -20,7 +20,10 @@ jobs:
           submodules: true
       - uses: borales/actions-yarn@v2.0.0
         with:
-          cmd: build # will run `yarn build` command:  
+          cmd: install # will run `yarn install` command
+      - uses: borales/actions-yarn@v2.0.0
+        with:
+          cmd: build # will run `yarn build` command:
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v0.0.1-preview
