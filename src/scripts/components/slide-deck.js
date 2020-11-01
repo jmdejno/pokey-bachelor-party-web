@@ -103,7 +103,8 @@ export class SlideDeck {
         });
 
         setTimeout(() => {
-            this._slides.forEach(({ contentElementSelector }) => {
+            this._slides.forEach(({ contentElementSelector, imgUrl }) => {
+                new Image().src = imgUrl;
                 if (contentElementSelector) {
                     const contentEl = document.querySelector(
                         contentElementSelector
