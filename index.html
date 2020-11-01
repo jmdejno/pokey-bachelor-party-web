@@ -34,14 +34,12 @@
         />
     </head>
     <body>
-        <main id="app-main" class="app__main">
-            <div id="app-photo-galley-counter"></div>
-            <div id=app-main-content>
-                <header class="app__header">
-                    <h1 class="app__header-title">
-                        Chris Pokrzywa's Bachelor Party
-                    </h1>
-                    <span>Denver, CO</span>
+        <main id="app-main" class="app__main" style="opacity: 0">
+            <!-- Slide 1 -->
+            <section id="intro-slide" class="slide">
+                <h1>Chris Pokrzywa's Bachelor Party</h1>
+                <p>
+                    <span>@ Denver, CO</span>
                     <br />
                     in
                     <br />
@@ -49,33 +47,34 @@
                         id="bachelor-party-date-countdown-timer-time"
                         class="app__countdown-timer"
                     ></span>
-                </header>
-                <div class="app__main-container">
-                    <section class="app__bio app__section elevation-2">
-                        <h2 class="my-0">The Groom</h2>
-                        <div class="my-2">Gentleman. Adventurer. Goofball.</div>
-                        <img class="app__img"
-                        src="<%= require('./src/assets/chris-bio.jpg') %>"
-                        alt="Chris Pokrzywa"></a>
-                        <div class="app__bio-details">
-                        </div>
-                    </section>
-                    <section class="app__attendees app__section elevation-2">
-                        <h2 class="my-0">The Attendees</h2>
-                        <div class="app__attendee-container">
-                            <h4>Jeremy Dejno</h4>
-                            <div class="app__attendees-details">
-                                <img class="app__img app__attendees-img mx-2"
-                                src="<%= require('./src/assets/jeremy-chris-dj.jpg') %>"
-                                alt="Chris Pokrzywa"></a>
+                </p>
+            </section>
 
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                    </section>
+            <!-- Slide 2 -->
+            <section id="groom-slide" class="slide">
+                <h2 class="my-0">The Groom</h2>
+                <p class="slide__subtitle my-2">
+                    Gentleman. Adventurer. Goofball.
+                </p>
+            </section>
+            <!-- Slide 3 -->
+            <section id="best-man-slide" class="slide">
+                <h2 class="my-0">The Best Man</h2>
+                <div class="slide__subtitle my-2">
+                    Coffee Snob. Stoic. Hippie.
                 </div>
+            </section>
+            <!-- Slide 4 - Beeler -->
+            <section id="beeler-slide" class="slide">
+                <h2 class="my-0">Beeler Man</h2>
+                <div class="slide__subtitle my-2">Rico.</div>
+            </section>
+            <div id="scroll-instructions">
+                Scroll
+                <br />
+                &darr;
             </div>
-
         </main>
+        <div id="app-photo-galley-counter"></div>
     </body>
 </html>

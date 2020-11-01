@@ -1,9 +1,6 @@
 @import "./util";
 @import "./elevations";
 
-// sections
-@import "./sections/attendees.scss";
-
 html,
 body {
     height: 100%;
@@ -18,10 +15,12 @@ a {
     color: inherit;
 }
 
-.app__main {
+#app-main {
+    height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     transition: all ease 1s;
     background-position: center;
@@ -30,58 +29,42 @@ a {
     background-size: cover;
 }
 
-#app-main-content {
-    transition: transform 1s ease;
-}
-
 #app-photo-galley-counter {
     position: fixed;
     right: 24px;
     bottom: 24px;
     font-size: 1.5em;
     font-weight: 500;
-    opacity: 0;
     color: white;
     transition: opacity 0.5s ease-out;
 }
 
-.app__main-container {
-    max-width: 600px;
+#scroll-instructions {
+    position: fixed;
+    bottom: 48px;
+    transition: opacity 1s ease;
+    animation: bounce 1s ease-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
 }
 
-.app__section {
-    margin: 24px 0;
-    padding: 24px;
-    background-color: white;
+@keyframes bounce {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(50%);
+    }
 }
 
-.app__img {
-    max-width: 100%;
-}
+// slides
+.slide {
+    position: fixed;
+    opacity: 0;
+    top: 48px;
 
-@media (min-aspect-ratio: 16/9) {
-    .video-foreground {
-        height: 300%;
-        top: -100%;
-    }
-}
-@media (max-aspect-ratio: 16/9) {
-    .video-foreground {
-        width: 300%;
-        left: -100%;
-    }
-}
-@media all and (max-width: 600px) {
-    .vid-info {
-        width: 50%;
-        padding: 0.5rem;
-    }
-    .vid-info h1 {
-        margin-bottom: 0.2rem;
-    }
-}
-@media all and (max-width: 500px) {
-    .vid-info .acronym {
-        display: none;
+    &__subtitle {
+        font-weight: 400;
     }
 }
