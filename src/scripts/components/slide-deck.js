@@ -23,7 +23,7 @@ const defaultOptions = {
     transitionTime: 1500,
     transitionEase: "ease",
     velocityThreshold: 5,
-    startIndex: 0
+    startIndex: 0,
 };
 
 export class SlideDeck {
@@ -101,7 +101,8 @@ export class SlideDeck {
         window.addEventListener("wheel", this._onWheel.bind(this), {
             passive: false,
         });
-
+        window.addEventListener("touchstart", this._onTouchStart.bind(this));
+        window.addEventListener("touchmove", this._onTouchMove.bind(this));
         setTimeout(() => {
             this._slides.forEach(({ contentElementSelector, imgUrl }) => {
                 new Image().src = imgUrl;
@@ -120,14 +121,27 @@ export class SlideDeck {
     _onWheel(event) {
         const { deltaY } = event;
         event.preventDefault();
-        requestAnimationFrame(() => {
-            if (this._shouldTransition(deltaY)) {
-                const isNext = deltaY > 0;
-                const slideIdx = this._currentSlideIdx + (isNext ? 1 : -1);
-                this._transitionSlide(slideIdx);
-            }
-        });
-        this._log(deltaY);
+        requestAnimationFrame(() => this._tryTransitionSlide(deltaY));
+    }
+
+    _onTouchStart(event) {
+        this._touchStart = event.touches[0];
+    }
+
+    _onTouchMove(event) {
+        const changedTouch = event.changedTouches[0];
+        if (this._touchStart) {
+            const deltaY = this._touchStart.screenY - changedTouch.screenY;
+            requestAnimationFrame(() => this._tryTransitionSlide(deltaY));
+        }
+    }
+
+    _tryTransitionSlide(deltaY) {
+        if (this._shouldTransition(deltaY)) {
+            const isNext = deltaY > 0;
+            const slideIdx = this._currentSlideIdx + (isNext ? 1 : -1);
+            this._transitionSlide(slideIdx);
+        }
     }
 
     _transitionSlide(slideIdx) {
