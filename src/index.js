@@ -1,6 +1,6 @@
 require("normalize.css/normalize.css");
 require("./styles/index.scss");
-const { PhotoGallery } = require("./scripts/photo-gallery");
+const { PhotoGallery } = require("./scripts/components/photo-gallery");
 const moment = require("moment");
 
 const DETAILS = {

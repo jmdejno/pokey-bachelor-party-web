@@ -2,7 +2,7 @@
 @import "./elevations";
 
 // sections
-@import './attendees.scss';
+@import "./sections/attendees.scss";
 
 html,
 body {
@@ -34,6 +34,17 @@ a {
     transition: transform 1s ease;
 }
 
+#app-photo-galley-counter {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    font-size: 1.5em;
+    font-weight: 500;
+    opacity: 0;
+    color: white;
+    transition: opacity 0.5s ease-out;
+}
+
 .app__main-container {
     max-width: 600px;
 }
@@ -47,7 +58,6 @@ a {
 .app__img {
     max-width: 100%;
 }
-
 
 @media (min-aspect-ratio: 16/9) {
     .video-foreground {
