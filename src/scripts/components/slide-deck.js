@@ -101,8 +101,12 @@ export class SlideDeck {
         window.addEventListener("wheel", this._onWheel.bind(this), {
             passive: false,
         });
-        window.addEventListener("touchstart", this._onTouchStart.bind(this));
-        window.addEventListener("touchmove", this._onTouchMove.bind(this));
+        window.addEventListener("touchstart", this._onTouchStart.bind(this), {
+            passive: false,
+        });
+        window.addEventListener("touchmove", this._onTouchMove.bind(this), {
+            passive: false,
+        });
         setTimeout(() => {
             this._slides.forEach(({ contentElementSelector, imgUrl }) => {
                 new Image().src = imgUrl;
@@ -129,6 +133,7 @@ export class SlideDeck {
     }
 
     _onTouchMove(event) {
+        event.preventDefault();
         const changedTouch = event.changedTouches[0];
         if (this._touchStart) {
             const deltaY = this._touchStart.screenY - changedTouch.screenY;
