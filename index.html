@@ -1,27 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Chris Pokrzywa's Bachelor Crew</title>
-    <!-- Twitter Card data -->
-    <meta name="twitter:card" value="Webpack basic starter project">
-    <meta name="Description" content="A simple webpack starter project for your basic web development needs."/>
-    <!-- Open Graph data -->
-    <meta property="og:title" content="Webpack basic starter project" />
-    <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://lifenautjoe.github.io/webpack-starter-basic/" />
-    <meta property="og:image" content="https://i.snag.gy/i3eMBc.jpg" />
-    <meta property="og:description" content="A simple webpack starter project for your basic web development needs." />
-    <!-- Mobile header color for Chrome, Firefox OS and Opera -->
-    <meta name="theme-color" content="#ff4970">
-    <!-- Mobile header color Windows Phone -->
-    <meta name="msapplication-navbutton-color" content="#ff4970">
-    <!-- Mobile header color for iOS Safari (supports black, black-translucent or default) -->
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Chris Pokrzywa's Bachelor Crew</title>
+        <!-- Twitter Card data -->
+        <meta name="twitter:card" value="Webpack basic starter project" />
+        <meta
+            name="Description"
+            content="A simple webpack starter project for your basic web development needs."
+        />
+        <!-- Open Graph data -->
+        <meta property="og:title" content="Webpack basic starter project" />
+        <meta property="og:type" content="article" />
+        <meta
+            property="og:url"
+            content="https://lifenautjoe.github.io/webpack-starter-basic/"
+        />
+        <meta property="og:image" content="https://i.snag.gy/i3eMBc.jpg" />
+        <meta
+            property="og:description"
+            content="A simple webpack starter project for your basic web development needs."
+        />
+        <!-- Mobile header color for Chrome, Firefox OS and Opera -->
+        <meta name="theme-color" content="#ff4970" />
+        <!-- Mobile header color Windows Phone -->
+        <meta name="msapplication-navbutton-color" content="#ff4970" />
+        <!-- Mobile header color for iOS Safari (supports black, black-translucent or default) -->
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <link
+            href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <main id="app-main" class="app__main">
+            <div id=app-main-content>
+                <header class="app__header">
+                    <h1 class="app__header-title">
+                        Chris Pokrzywa's Bachelor Party
+                    </h1>
+                    <span>Denver, CO</span>
+                    <br />
+                    in
+                    <br />
+                    <span
+                        id="bachelor-party-date-countdown-timer-time"
+                        class="app__countdown-timer"
+                    ></span>
+                </header>
+                <div class="app__main-container">
+                    <section class="app__bio app__section elevation-2">
+                        <h2 class="my-0">The Groom</h2>
+                        <div class="my-2">Gentleman. Adventure. Goofball.</div>
+                        <img class="app__img"
+                        src="<%= require('./src/assets/chris-bio.jpg') %>"
+                        alt="Chris Pokrzywa"></a>
+                        <div class="app__bio-details">
+                        </div>
+                    </section>
+                    <section class="app__attendees app__section elevation-2">
+                        <h2 class="my-0">The Attendees</h2>
+                        <div class="app__attendee-container">
+                            <h4>Jeremy Dejno</h4>
+                            <div class="app__attendees-details">
+                                <img class="app__img app__attendees-img mx-2"
+                                src="<%= require('./src/assets/jeremy-chris-dj.jpg') %>"
+                                alt="Chris Pokrzywa"></a>
 
-</body>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+        </main>
+    </body>
 </html>

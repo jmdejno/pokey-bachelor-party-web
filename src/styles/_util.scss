@@ -1,0 +1,38 @@
+$margins: (
+    0: 0,
+    1: 4,
+    2: 8,
+    3: 16,
+    4: 24,
+    5: 48,
+);
+
+@each $dir in ("", x, y) {
+    @each $suffix, $margin in $margins {
+        .m#{$dir}-#{$suffix} {
+            $value: "";
+
+            @if $dir == "" {
+                $value: #{$margin}px;
+            }
+
+            @if $dir == x {
+                $value: 0 #{$margin}px;
+            }
+
+            @if $dir == y {
+                $value: #{$margin}px 0;
+            }
+
+            margin: #{$value};
+        }
+    }
+}
+
+.clearfix {
+    &:after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+}
