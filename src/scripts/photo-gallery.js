@@ -13,7 +13,7 @@ export class PhotoGallery {
         this.container = document.querySelector(imageContainerSelector);
         this.content = document.querySelector(appContentSelector);
         this.images = [
-            require("../assets/chris+allie-1.jpg"),
+            require("../assets/chris-allie-1.jpg"),
             require("../assets/chris-bio.jpg"),
             require("../assets/chris-allie-sf.jpg"),
         ];
