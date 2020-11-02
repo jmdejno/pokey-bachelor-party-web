@@ -1,6 +1,9 @@
 @import "./util";
 @import "./elevations";
 
+// components
+@import "./components/slide-deck.scss";
+
 html,
 body {
     height: 100%;
@@ -46,6 +49,12 @@ a {
     animation: bounce 1s ease-out;
     animation-iteration-count: infinite;
     animation-direction: alternate;
+}
+
+#slide-deck-sidebar {
+    position: fixed;
+    right: 48px;
+    top: 48px;
 }
 
 @keyframes bounce {

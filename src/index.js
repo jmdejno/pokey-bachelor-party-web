@@ -13,6 +13,7 @@ const SELECTORS = {
     APP_MAIN: "#app-main",
     SLIDE_COUNTER: "#app-photo-galley-counter",
     SCROLL_INSCTRUCTIONS: "#scroll-instructions",
+    SLIDE_DECK_SIDEBAR: '#slide-deck-sidebar'
 };
 
 /**
@@ -37,7 +38,7 @@ const slides = [
     },
 ];
 
-const init = () => {
+const show = () => {
     const main = document.querySelector(SELECTORS.APP_MAIN);
     main.style.opacity = "1";
 };
@@ -45,28 +46,44 @@ const init = () => {
 const getSlideStartIndex = () => {
     const hash = window.location.hash;
     const parsedHash = parseInt(hash.replace("#", ""));
-    return isNaN(parsedHash) ? 0 : parsedHash - 1;
+    return isNaN(parsedHash) ? 0 : Math.min(slides.length, parsedHash) - 1;
 };
 
 document.addEventListener("DOMContentLoaded", () => {
+    init();
+    setTimeout(show, 1000);
+});
+
+function init() {
+    initCountdownTimer();
+    initSlideDeck();
+}
+
+function initCountdownTimer() {
     CountdownTimer.init({
         selector: SELECTORS.COUNTDOWN_TIMER,
         date: DETAILS.startDate,
     });
+}
+
+function initSlideDeck() {
     const slideDeck = SlideDeck.init(slides, {
         containerElementSelector: SELECTORS.APP_MAIN,
         counterElementSelector: SELECTORS.SLIDE_COUNTER,
+        sidebarElementSelector: SELECTORS.SLIDE_DECK_SIDEBAR,
         startIndex: getSlideStartIndex(),
     });
 
-    const scrollInstrcutions = document.querySelector(SELECTORS.SCROLL_INSCTRUCTIONS);
+    let isScrollVisivle = true;
+    const scrollInstrcutions = document.querySelector(
+        SELECTORS.SCROLL_INSCTRUCTIONS
+    );
     slideDeck.onTransitionStart((idx) => {
         window.location.hash = idx + 1;
-        if (idx > 0) {
-            scrollInstrcutions.style.opacity = '0';
-            scrollInstrcutions.style.animation = '';
+        if (idx > 0 && isScrollVisivle) {
+            isScrollVisivle = false;
+            scrollInstrcutions.style.opacity = "0";
+            scrollInstrcutions.style.animation = "";
         }
     });
-
-    setTimeout(init, 1000);
-});
+}
