@@ -1,8 +1,9 @@
 require("normalize.css/normalize.css");
 require("./styles/index.scss");
+
 const moment = require("moment");
-const { CountdownTimer } = require("./scripts/components/countdown-timer");
-const { SlideDeck } = require("./scripts/components/slide-deck");
+import { CountdownTimer } from "./scripts/components/countdown-timer";
+import { SlideDeck } from "./scripts/components/slide-deck";
 
 const DETAILS = {
     startDate: moment([2021, 9, 20]),
@@ -25,14 +26,17 @@ const slides = [
         contentElementSelector: "#intro-slide",
     },
     {
+        title: "Grrom",
         imgUrl: require("./assets/chris-bio.jpg"),
         contentElementSelector: "#groom-slide",
     },
     {
+        title: "Best Man",
         imgUrl: require("./assets/chris-allie-sf.jpg"),
         contentElementSelector: "#best-man-slide",
     },
     {
+        title: "Beeler Man",
         imgUrl: require("./assets/beeler-chris-napoleon.jpg"),
         contentElementSelector: "#beeler-slide",
     },

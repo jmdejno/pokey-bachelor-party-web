@@ -1,10 +1,10 @@
-const { debounce } = require("../utils/timings");
+import { isMobile } from "../utils/user-agent";
+import { debounce } from "../utils/timings";
 
 /**
  * @typedef SlideDeckOptions
  * @type {object}
  * @property {string} containerElementSelector is the query selector for the container element
- * @property {string} [contentElementSelector] is the query selector for the content element (e.g title and description)
  * @property {string} [counterElementSelector] is the query selector for the slide count text
  * @property {string} [sidebarElementSelector] is the query selector for the side bar
  * @property {string} [transitionTime] is the duration of each transition
@@ -16,8 +16,9 @@ const { debounce } = require("../utils/timings");
 /**
  * @typedef SlideData
  * @type {object}
- * @property {string} contentElement is the HTMLElement that contains the text description of the
+ * @property {string} contentElementSelector is the HTMLElement that contains the text description of the
  * @property {string} imgUrl is the URL of the background img of the slide
+ * @property {string} [title] is the title of thr slide--to be used in the sidebar
  */
 
 const defaultOptions = {
@@ -175,7 +176,7 @@ export class SlideDeck {
     }
 
     _initSidebar() {
-        if (!this.options.sidebarElementSelector) {
+        if (!this.options.sidebarElementSelector || isMobile()) {
             return;
         }
 
@@ -193,13 +194,14 @@ export class SlideDeck {
             const list = document.createElement("ol");
             list.classList.add(CLASSES.SIDEBAR_LIST);
             fragment.appendChild(list);
-            this._slides.forEach((_, idx) => {
+            this._slides.forEach((slide, idx) => {
                 const button = document.createElement("button");
                 button.classList.add(CLASSES.SIDEBAR_LIST_ITEM_BTN);
                 button.textContent = idx + 1;
 
                 const li = document.createElement("li");
                 li.setAttribute("data-slide-index", idx);
+                li.setAttribute("data-slide-title", slide.title || "");
                 li.classList.add(CLASSES.SIDEBAR_LIST_ITEM);
                 li.appendChild(button);
                 list.appendChild(li);

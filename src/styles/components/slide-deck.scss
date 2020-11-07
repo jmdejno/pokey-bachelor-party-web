@@ -47,5 +47,12 @@
         &--active {
             opacity: 1;
         }
+
+        &::before {
+            content: attr(data-slide-title);
+            position: absolute;
+            right: 24px;
+            width: max-content;
+        }
     }
 }
