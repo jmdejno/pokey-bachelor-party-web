@@ -37,7 +37,7 @@ const CLASSES = {
     SIDEBAR_LIST_ITEM_ACTIVE: "slide-deck__sidebar-list-item--active",
 };
 
-const SELECTORS = {
+const DATA_ATTRIBUTES = {
     DATA_SLIDE_INDEX: "data-slide-index",
 };
 
@@ -96,7 +96,7 @@ export class SlideDeck {
     get currentSidebarListItem() {
         return this._sidebar
             ? this._sidebar.querySelector(
-                  `li[${SELECTORS.DATA_SLIDE_INDEX}="${this.currentSlideIdx}"]`
+                  `li[${DATA_ATTRIBUTES.DATA_SLIDE_INDEX}="${this.currentSlideIdx}"]`
               )
             : null;
     }
@@ -244,7 +244,7 @@ export class SlideDeck {
     _onSidebarItemClick({ target }) {
         const item = target.parentNode;
         const slideIdx = parseInt(
-            item.getAttribute(SELECTORS.DATA_SLIDE_INDEX)
+            item.getAttribute(DATA_ATTRIBUTES.DATA_SLIDE_INDEX)
         );
         if (!isNaN(slideIdx)) {
             this._transitionSlide(slideIdx);
