@@ -152,6 +152,7 @@ export class SlideDeck {
         window.addEventListener("touchmove", this._onTouchMove.bind(this), {
             passive: false,
         });
+        window.addEventListener("keyup", this._onKeyUp.bind(this));
 
         if (this._sidebar) {
             this._sidebar.addEventListener(
@@ -240,6 +241,24 @@ export class SlideDeck {
         if (this._touchStart) {
             const deltaY = this._touchStart.screenY - changedTouch.screenY;
             requestAnimationFrame(() => this._tryTransitionSlide(deltaY));
+        }
+    }
+
+    /**
+     * Handle key up event
+     * @param {KeyboardEvent} event
+     */
+    _onKeyUp(event) {
+        const { key } = event;
+        if ((key === 'ArrowLeft' || key === 'ArrowRight') && !this._isTrasitioning) {
+            const isNext = key === 'ArrowRight';
+            let slideIdx;
+            if (isNext) {
+                slideIdx = this._currentSlideIdx === this._slides.length - 1 ? 0 : this._currentSlideIdx + 1;
+            } else {
+                slideIdx = this._currentSlideIdx === 0 ? this._slides.length - 1 : this._currentSlideIdx - 1;
+            }
+            this._transitionSlide(slideIdx);
         }
     }
 

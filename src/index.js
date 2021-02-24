@@ -6,7 +6,8 @@ import { CountdownTimer } from "./scripts/components/countdown-timer";
 import { SlideDeck } from "./scripts/components/slide-deck";
 
 const DETAILS = {
-    startDate: moment([2021, 9, 20]),
+    startDate: moment([2021, 6, 15]),
+    endDate: moment([2021, 6, 18])
 };
 
 const SELECTORS = {
@@ -22,11 +23,12 @@ const SELECTORS = {
  */
 const slides = [
     {
+        title: "Overview",
         imgUrl: require("./assets/chris-allie-1.jpg"),
         contentElementSelector: "#intro-slide",
     },
     {
-        title: "Grrom",
+        title: "Groom",
         imgUrl: require("./assets/chris-bio.jpg"),
         contentElementSelector: "#groom-slide",
     },
@@ -37,8 +39,13 @@ const slides = [
     },
     {
         title: "Beeler Man",
-        imgUrl: require("./assets/beeler-chris-napoleon.jpg"),
+        imgUrl: require("./assets/beeler-beer.jpg"),
         contentElementSelector: "#beeler-slide",
+    },
+    {
+        title: "Brando",
+        imgUrl: require("./assets/brando-dog.jpg"),
+        contentElementSelector: "#brando-slide",
     },
 ];
 
@@ -59,6 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function init() {
+    initOgImage();
     initCountdownTimer();
     initSlideDeck();
 }
@@ -67,6 +75,7 @@ function initCountdownTimer() {
     CountdownTimer.init({
         selector: SELECTORS.COUNTDOWN_TIMER,
         date: DETAILS.startDate,
+        endDate: DETAILS.endDate
     });
 }
 
@@ -90,4 +99,8 @@ function initSlideDeck() {
             scrollInstrcutions.style.animation = "";
         }
     });
+}
+
+function initOgImage() {
+    document.querySelector('[property="og:image"]').setAttribute('content', require("./assets/chris-bio.jpg"));
 }
