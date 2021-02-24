@@ -4,17 +4,10 @@
 * https://github.com/postcss/postcss
 */
 
-const purgecss = require('@fullhuman/postcss-purgecss');
 const autoprefixer = require('autoprefixer');
 
 module.exports = {
     plugins: [
-        /*
-        * Remove unused CSS
-        */
-        purgecss({
-            content: ['./**/*.html']
-        }),
         /*
         * Adds vendor prefixes to css attributes
         * https://github.com/postcss/autoprefixer

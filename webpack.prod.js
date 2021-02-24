@@ -133,7 +133,6 @@ module.exports = {
                 discardComments: {
                     removeAll: true
                 },
-                discardUnused: false
             },
             canPrint: true
         })
