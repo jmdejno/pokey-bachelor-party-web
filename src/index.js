@@ -66,7 +66,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function init() {
-    initOgImage();
     initCountdownTimer();
     initSlideDeck();
 }
@@ -99,8 +98,4 @@ function initSlideDeck() {
             scrollInstrcutions.style.animation = "";
         }
     });
-}
-
-function initOgImage() {
-    document.querySelector('[property="og:image"]').setAttribute('content', require("./assets/chris-bio.jpg"));
 }
